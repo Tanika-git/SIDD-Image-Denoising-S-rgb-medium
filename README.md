@@ -1,1 +1,1 @@
-# SIDD-Image-Denoising-S-rgb-medium
+# SIDD-Image-Denoising-sRBG-medium
