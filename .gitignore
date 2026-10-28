@@ -218,3 +218,39 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Never commit SIDD image archives, extracted training data, or large checkpoints.
+train/
+data/
+dataset/
+datasets/
+SIDD_DATASET_*/
+SIDD_Project_Subset/
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.mat
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npy
+*.npz
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+*.key
+*.pem
+private/
+raw_evidence/
+outputs/
+checkpoints/
+logs/
+# Tracking lightweight evidence files in analysis/ and experiments/ remains allowed.
+
