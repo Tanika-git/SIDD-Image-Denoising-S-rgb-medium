@@ -1,0 +1,35 @@
+# SIDD-Medium — Team Progress Review (29 October 2026)
+
+## Completed Work
+
+- Acquired and verified SIDD-Medium sRGB: 160 scene-instance folders and 320 noisy/ground-truth pairs.
+- Prepared a small test dataset of three distinct physical scenes.
+- Executed CPU smoke tests of U-Net and NAFNet using two training steps per model.
+- Saved model checkpoints, configurations and experimental records.
+- Generated visual comparisons and preliminary PSNR measurements.
+
+## Experimental Setup
+
+- Dataset: SIDD-Medium sRGB
+- Test subset: 1 training pair, 1 validation pair, 1 test pair
+- Inference crop: 64 × 64 pixels
+- Models: U-Net and NAFNet
+- Training: 2 steps each, batch size 1, CPU
+
+## Important Limitations
+
+**These results demonstrate pipeline functionality, not successful denoising or reproduced benchmark performance.**
+
+Both models currently perform worse than the original noisy images on the measured validation and test crops. The models require substantially more training before meaningful architecture comparisons can be made.
+
+## Next Milestone
+
+Train both baseline models using the complete dataset under a consistent experimental protocol, evaluate PSNR/SSIM, and investigate potential improvements to NAFNet's gating mechanism.
+
+## Attribution
+
+Baseline implementation: https://github.com/nitya-goyal/SOTA-Image-Denoising
+
+Dataset: SIDD, Abdelhamed et al., CVPR 2018.
+
+Experimental execution and results: documented in this repository.
