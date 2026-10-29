@@ -1,0 +1,4 @@
+split,noisy_psnr_db,unet_2step_psnr_db,nafnet_2step_psnr_db
+train,32.94,17.28,13.84
+val,34.37,17.29,11.31
+test,31.95,19.24,23.71
