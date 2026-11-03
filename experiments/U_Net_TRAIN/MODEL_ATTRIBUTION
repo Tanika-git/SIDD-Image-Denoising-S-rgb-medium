@@ -1,0 +1,90 @@
+# U-Net Model Attribution and Research Sharing Record
+
+**Model:** U-Net — SIDD-Medium sRGB Image Denoising  
+**Original Training Researcher:** [@Tanika-git](https://github.com/Tanika-git)  
+**Experiment:** `sidd_unet_seed42_v1`  
+**Training Completed:** 3 November 2026  
+**Status:** 20,000 successful optimizer updates completed
+
+## 1. Original Training Attribution
+
+The trained U-Net checkpoint and experimental results documented in this repository were produced through the U-Net research experiment independently executed and managed by **@Tanika-git**.
+
+The researcher's contributions include:
+
+- Adaptation and configuration of the U-Net training implementation.
+- SIDD-Medium sRGB experimental data preparation.
+- Kaggle GPU training, troubleshooting and execution.
+- Pilot training and completion of the 20,000-step experiment.
+- Model checkpoint generation, management and preservation.
+- Validation and held-out test evaluation.
+- Generation and documentation of PSNR, SSIM, loss curves and experimental results.
+- Preservation of experiment logs, configurations and research evidence.
+
+The initial reference implementation was provided through research teammate Nitya Goyal. The subsequent training work and recorded experimental results are attributed to **@Tanika-git**.
+
+## 2. Original Model Identity
+
+| Property | Recorded information |
+|---|---|
+| Training researcher | @Tanika-git |
+| Model | U-Net |
+| Dataset | SIDD-Medium sRGB |
+| Experiment ID | `sidd_unet_seed42_v1` |
+| Completed optimizer steps | 20,000 |
+| Original checkpoint | `step_020000.pt` |
+| Checkpoint size | 94,214,219 bytes |
+| Completion date | 3 November 2026 |
+
+**Original checkpoint SHA-256:**
+
+`cf4a28c5f97d6b1a4c4a2a6fa256fbc0d51a147c36128d773bf89c43d949e073`
+
+This checksum identifies the original full checkpoint. Any separately exported inference checkpoint must have its own checksum.
+
+## 3. Recorded Experimental Results
+
+| Measurement | Result |
+|---|---:|
+| Validation PSNR | 36.533 dB |
+| Validation SSIM | 0.90064 |
+| Held-out test PSNR | 41.232 dB |
+| Held-out test SSIM | 0.95286 |
+
+These are internal experimental results, not official SIDD benchmark scores.
+
+## 4. Research Collaboration and Checkpoint Sharing
+
+**Research collaborators:** Nitya Goyal and Kannu Goyal.
+
+**Sharing purpose:** Private academic research and U-Net versus NAFNet comparison.
+
+The trained model is being made available for collaborative research. The original training, evaluation and recorded results remain attributed to @Tanika-git.
+
+Actual checkpoint transfer details, including the shared filename, checksum, recipient and delivery date, will be recorded after transfer.
+
+### Attribution for Further Use
+
+The following attribution is requested wherever the trained checkpoint, its derivatives or its recorded experimental results are used, presented or distributed:
+
+> **U-Net denoising model trained and evaluated by @Tanika-git (2026), SIDD-Medium sRGB, 20,000-step experiment. Original training evidence and results: https://github.com/Tanika-git/SIDD-Image-Denoising-S-rgb-medium**
+
+This includes research reports, presentations, publications, public repositories, model-hosting platforms and redistributed checkpoint copies.
+
+Collaborators are requested to preserve the original training attribution and obtain appropriate permission before public redistribution.
+
+This record establishes the documented experimental provenance and requested attribution. It does not override previously granted permissions, inherited software licenses or applicable institutional rights.
+
+## 5. Supporting Original Evidence
+
+- [U-Net Experiment README](README.md)
+- [Contributions and Provenance](CONTRIBUTIONS_AND_PROVENANCE.md)
+- [Training History](history.csv)
+- [Timestamped Training Log](train_log.jsonl)
+- [Experiment Configuration](run_info.json)
+- [Held-out Test Results](test_summary.json)
+- [Per-Crop Measurements](test_per_crop.csv)
+
+The original full checkpoint, associated Kaggle notebook versions and private training artifacts are retained separately for verification.
+
+**Original U-Net training and experimental-results attribution: [@Tanika-git](https://github.com/Tanika-git).**
