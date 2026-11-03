@@ -1,4 +1,93 @@
 <div align="center">
+# U-Net Training & Evaluation — Original Research Experiment by @Tanika-git
+
+**Researcher and U-Net Training Lead:** [@Tanika-git](https://github.com/Tanika-git)
+
+**Experiment:** SIDD-Medium sRGB Image Denoising
+
+**Status:** COMPLETED — 20,000 Successful Optimizer Updates
+
+**Training Completion:** 3 November 2026
+
+## Original Training and Individual Contribution Attribution
+
+**The U-Net model documented in this experiment was adapted, trained, monitored, checkpointed, evaluated and documented by @Tanika-git.**
+
+I independently carried out the recorded U-Net training experiment, from the initial pilot through the completed 20,000-step training milestone, using Kaggle GPU resources.
+
+The initial reference implementation was provided by research teammate Nitya Goyal. I adapted the code for my SIDD-Medium sRGB experiment and personally performed the subsequent training and evaluation work.
+
+### My Individual Contributions
+
+- Adaptation and configuration of the U-Net experimental implementation.
+- SIDD-Medium sRGB data preparation and experimental organization.
+- Kaggle training workflow setup and troubleshooting.
+- Training configuration, optimizer, loss and scheduling setup.
+- Pilot training and completion of the 20,000-step experiment.
+- Training monitoring and checkpoint preservation.
+- Experimental logs, histories and configuration management.
+- Validation analysis and performance tracking.
+- Held-out test evaluation and PSNR/SSIM result generation.
+- Training visualizations and research documentation.
+- Original experiment provenance and evidence preservation.
+
+### Completed Experimental Results
+
+| Measurement | Recorded result |
+|---|---:|
+| Successful optimizer updates | 20,000 |
+| Validation PSNR | **36.533 dB** |
+| Validation SSIM | **0.90064** |
+| Held-out test PSNR | **41.232 dB** |
+| Held-out test SSIM | **0.95286** |
+| Evaluated checkpoint | `step_020000.pt` |
+
+The results above are from the documented internal evaluation protocol, not the official SIDD benchmark.
+
+## Model Provenance and Attribution
+
+**Original U-Net experiment and trained checkpoint: @Tanika-git**
+
+**Training execution, checkpoint management, evaluation and documented experimental results: @Tanika-git**
+
+**Starting/reference implementation provided by: Nitya Goyal**
+
+The original trained model and recorded U-Net experimental results are attributed to @Tanika-git as the researcher responsible for the documented training experiment.
+
+### Research Sharing
+
+**Research collaborators and checkpoint recipients:** Nitya Goyal and Kannu Goyal.
+
+**Purpose:** Private academic research and U-Net versus NAFNet comparison.
+
+The trained model is shared for collaborative research. Sharing the checkpoint does not transfer credit for the original training, evaluation or experimental results.
+
+### Attribution for Online Distribution and Publications
+
+Any repository, model-hosting platform, presentation, research report or public distribution using this trained U-Net model or its recorded results is requested to preserve the following original training attribution:
+
+> **U-Net denoising model trained and evaluated by @Tanika-git on SIDD-Medium sRGB, November 2026. Original 20,000-step training experiment and results: https://github.com/Tanika-git/SIDD-Image-Denoising-S-rgb-medium**
+
+Collaborators are requested not to redistribute or publicly publish the shared checkpoint without prior agreement, subject to applicable existing rights.
+
+If a copy of the checkpoint appears online without attribution, this repository's original experiment logs, checkpoint checksum, results and training records remain available to establish the documented origin of the training experiment.
+
+### Original Checkpoint Identity
+
+**Experiment ID:** `sidd_unet_seed42_v1`
+
+**Original checkpoint:** `step_020000.pt`
+
+**Recorded original SHA-256:**
+
+`cf4a28c5f97d6b1a4c4a2a6fa256fbc0d51a147c36128d773bf89c43d949e073`
+
+This hash identifies the original full checkpoint. Shared derivative files will be identified separately.
+
+**For complete methodology, training logs, quantitative results, validation plots, reproducibility details and scientific references, see the remaining sections of this README and the accompanying experiment files.**
+
+---
+
 
 # ✨ U-Net for Real-World Image Denoising
 
