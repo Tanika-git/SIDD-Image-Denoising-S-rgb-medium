@@ -1,5 +1,5 @@
 <div align="center">
-# U-Net Training & Evaluation — Original Research Experiment by @Tanika-git
+# U-Net Training & Evaluation — Original Research Experiment by @Tanika-git!
 
 **Researcher and U-Net Training Lead:** [@Tanika-git](https://github.com/Tanika-git)
 
