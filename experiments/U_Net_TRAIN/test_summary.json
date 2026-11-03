@@ -1,0 +1,19 @@
+{
+  "model": "unet",
+  "checkpoint_step": 20000,
+  "checkpoint_file": "step_020000.pt",
+  "checkpoint_protocol_digest": "54ee01fcd684fbc610e0e213754b653bc97bb0e499ff7deb91855bb9534f03d0",
+  "protocol": "INTERNAL physical-scene-disjoint fixed 256px crop SIDD-Medium sRGB test; NOT official SIDD benchmark",
+  "test_physical_group": "physical_scene_03 (from the experiment config, NOT independently manifest-verified)",
+  "n_crops": 60,
+  "test_source": "user-supplied frozen test_noisy.npy / test_clean.npy",
+  "metric_method": "per-crop float RGB PSNR and 11x11 Gaussian SSIM; mean over crops; 0..1 model output clamped",
+  "note": "Evaluated the 20K milestone checkpoint, not a separate validation-best checkpoint.",
+  "evaluation_device": "CPU torch 2.10.0+cpu",
+  "psnr": 41.23163343136806,
+  "ssim": 0.9528574054486149,
+  "mse": 0.00013918242111449287,
+  "noisy_psnr": 28.258986772004164,
+  "noisy_ssim": 0.5290293611575975,
+  "test_l1": 0.007336480158846826
+}
