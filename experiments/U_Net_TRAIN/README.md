@@ -2,7 +2,7 @@
 
 **SIDD-Medium sRGB | PyTorch | 20,000-Step Training Experiment**
 
-**U-Net implementation adaptation, complete training execution, checkpoint management, evaluation, and experimental results: @Tanika-git:** [@Tanika-git](https://github.com/Tanika-git)  
+**U-Net implementation adaptation, complete training execution, checkpoint management, evaluation, and experimental results: [@Tanika-git](https://github.com/Tanika-git)  
 **Status:** Training and internal evaluation completed on 3 November 2026
 
 This folder documents a U-Net image-denoising experiment conducted on paired noisy and clean images from SIDD-Medium sRGB. It includes training records, validation curves, checkpoint provenance, and held-out evaluation results.
