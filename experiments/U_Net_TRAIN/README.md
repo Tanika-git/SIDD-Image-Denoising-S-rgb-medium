@@ -184,13 +184,27 @@ The researcher adapted the initial reference code, prepared and operated the SID
 
 ### Attribution for further use
 
-For any public repository, presentation, paper, model-hosting page, or redistributed copy that uses the trained checkpoint or reported results, the requested experiment attribution is:
+### Attribution for Further Use and Distribution
 
-> **U-Net denoising model trained and evaluated by @Tanika-git on SIDD-Medium sRGB (November 2026). Original 20,000-step experiment and results: https://github.com/Tanika-git/SIDD-Image-Denoising-S-rgb-medium**
+**Original U-Net training experiment, trained checkpoint, evaluation and recorded results: [@Tanika-git](https://github.com/Tanika-git).**
 
-Collaborators are requested to preserve this credit and consult the relevant project members before public redistribution. Attribution embedded in a `.pt` file can be removed; this repository's original checkpoint identity, logs, dated experiment records, and commit history provide independent provenance. These requests do not override existing third-party licenses, prior permissions, or applicable institutional rights.
+The U-Net model documented here was adapted, trained, monitored, checkpointed and evaluated by @Tanika-git. The completed 20,000-step experiment and its recorded PSNR, SSIM, validation histories and testing results are attributed to this researcher's work.
 
-See [`CONTRIBUTIONS_AND_PROVENANCE.md`](CONTRIBUTIONS_AND_PROVENANCE.md) for the detailed attribution record. The root repository documents the separately completed dataset research and related analysis by @Tanika-git.
+**Attribution requested wherever this trained model or its experimental results are used:**
+
+> **U-Net denoising model trained and evaluated by @Tanika-git (2026), SIDD-Medium sRGB, 20,000-step experiment. Original training, checkpoint provenance and experimental results: https://github.com/Tanika-git/SIDD-Image-Denoising-S-rgb-medium**
+
+This attribution is requested for any public upload, redistributed checkpoint, derived model, GitHub repository, model-hosting platform, demonstration, academic report, presentation or research publication using the original trained checkpoint or its recorded results.
+
+**Research/Team collaborators:** Nitya Goyal and Kannu Goyal.
+
+Sharing the trained checkpoint with research collaborators for U-Net versus NAFNet comparison does not transfer credit for the original training execution or experimental results.
+
+The starting reference implementation provided by Nitya Goyal and the published U-Net architecture retain their separate source credits.
+
+The original experiment logs, checkpoint identity, SHA-256 checksum and dated GitHub records are preserved as evidence of the training contribution. These attribution requests do not override existing third-party rights or previously granted permissions.
+
+See [`CONTRIBUTIONS_AND_PROVENANCE.md`](CONTRIBUTIONS_AND_PROVENANCE.md) for the detailed experiment record.
 
 ## References
 
