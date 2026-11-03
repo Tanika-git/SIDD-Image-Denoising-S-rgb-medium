@@ -1,0 +1,104 @@
+{
+  "architecture": "unet",
+  "source_commit": "89c18654b5e034aa7c93dc050fbf6ec15dde9050",
+  "config": {
+    "run_id": "sidd_unet_seed42_v1",
+    "session_id": "s20261103T022106Z_81744e72",
+    "dataset_slug": "",
+    "seed": 42,
+    "max_steps": 20000,
+    "benchmark_steps": 1,
+    "batch_size": 4,
+    "train_patch": 128,
+    "bank_size": 192,
+    "bank_per_pair": 64,
+    "eval_patch": 256,
+    "val_crops_per_pair": 2,
+    "test_crops_per_pair": 2,
+    "val_groups": 2,
+    "test_groups": 1,
+    "checkpoint_minutes": 10,
+    "milestone_minutes": 60,
+    "eval_every_steps": 500,
+    "max_wall_hours": 6.5,
+    "lr": 0.0002,
+    "min_lr": 1e-06,
+    "use_amp": true,
+    "unet_width": 32,
+    "nafnet_width": 32,
+    "nafnet_middle": 12,
+    "nafnet_enc": [
+      2,
+      2,
+      4,
+      8
+    ],
+    "nafnet_dec": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "preflight_only": false,
+    "pilot_only": false,
+    "early_stop": false,
+    "early_min_frac": 1.0,
+    "early_patience_frac": 1.0,
+    "early_min_delta_db": 0.0
+  },
+  "parameter_count": 7846723,
+  "torch": "2.11.0+cu130",
+  "cuda": "13.0",
+  "gpu": "Tesla T4",
+  "protocol": {
+    "protocol": "INTERNAL physical-scene-disjoint fixed-crop sRGB (NOT official SIDD benchmark)",
+    "data_root": "/kaggle/input/datasets",
+    "data_slug": "datasets",
+    "seed": 42,
+    "model_source_revision": "89c18654b5e034aa7c93dc050fbf6ec15dde9050",
+    "pair_counts": {
+      "train": 220,
+      "val": 70,
+      "test": 30
+    },
+    "physical_groups": {
+      "train": [
+        "physical_scene_01",
+        "physical_scene_02",
+        "physical_scene_05",
+        "physical_scene_06",
+        "physical_scene_07",
+        "physical_scene_09",
+        "physical_scene_10"
+      ],
+      "val": [
+        "physical_scene_04",
+        "physical_scene_08"
+      ],
+      "test": [
+        "physical_scene_03"
+      ]
+    },
+    "manifest_sha256": {
+      "train": "42fcff7bde6070cc5692cf2e6f2a17e7211151eda427a966709ee46a277f96ce",
+      "val": "5a0d3718dec17e9210023da4ad876cf19ed1ba728de644d1aeab4ed5c53d5b65",
+      "test": "b0fbcc0eda7f0f92598910f2a8ec6393fa0d533d180dd04ff31d893e5d7cd636"
+    },
+    "sampling": "cached 192px training crops -> random 128px subcrops + D4",
+    "validation": "per-patch float RGB PSNR & 11x11 Gaussian SSIM on fixed 256px crops",
+    "total_pairs": 320,
+    "created_at": "2026-11-03T02:22:06+00:00"
+  },
+  "device": "single T4 CUDA GPU, U-Net only",
+  "determinism": "random seeds fixed; cuDNN benchmark enabled and bitwise deterministic replay is not guaranteed",
+  "learning_rate_schedule": "Original 20,000-step cosine schedule; 100 original U-Net updates imported and verified before resuming.",
+  "snapshots": [
+    1000,
+    5000,
+    10000,
+    20000
+  ],
+  "legacy_start": "Original 100-step SIDD U-Net experiment; full optimizer state retained if available, otherwise explicitly marked RESET",
+  "disclosure": "Internal SIDD-Medium scene-disjoint fixed-crop evaluation, NOT official SIDD benchmark",
+  "created_at": "2026-11-03T02:25:33+00:00"
+}
