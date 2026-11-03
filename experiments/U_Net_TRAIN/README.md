@@ -1,130 +1,57 @@
-# U-Net Training on SIDD-Medium sRGB — 20,000 Steps
+# U-Net training and evaluation evidence — SIDD-Medium sRGB
 
-## Experiment Overview
+**Experiment:** `sidd_unet_seed42_v1` · **Seed:** 42 · **Architecture:** U-Net · **Run:** 20,000 reported successful optimizer updates (7 AMP-skipped attempts).  
+**Recorded source revision:** `89c18654b5e034aa7c93dc050fbf6ec15dde9050` (retained for experiment reproducibility).  
+**Hardware:** Kaggle, single Tesla T4 for this U-Net run; final held-out inference was separately performed on CPU from the saved checkpoint.
 
-This folder documents my U-Net image-denoising training experiment conducted on the SIDD-Medium sRGB dataset as part of our team's image restoration research project.
+## Experiment contribution
 
-**Experiment ID:** `sidd_unet_seed42_v1`  
-**Experiment date:** November 3, 2026  
-**Platform:** Kaggle  
-**GPU:** NVIDIA Tesla T4  
-**Training target:** 20,000 steps  
-**Dataset:** SIDD-Medium sRGB  
-**Training objective:** Restore clean RGB images from real noisy smartphone images.
+**U-Net training experiment, modified workflow and recorded results:** **[@Tanika-git](https://github.com/Tanika-git)** (Kaggle experiment `sidd_unet_seed42_v1`). This experiment record documents the configuration/adaptation of the training workflow, execution through the 20,000-step milestone, checkpoint preservation, training/validation measurements, and held-out evaluation evidence. Git commits and privately retained Kaggle logs/checkpoints provide dated evidence of the work.
 
-This is an independently executed U-Net training experiment contributing to our team's comparative study of image-denoising architectures.
+**Research context:** U-Net is an established architecture; SIDD-Medium sRGB is a published dataset. This record establishes work on this training/evaluation experiment, rather than a claim to have invented either. See [`CONTRIBUTIONS_AND_PROVENANCE.md`](CONTRIBUTIONS_AND_PROVENANCE.md).
 
-## 1. Dataset and Methodology
+## Results (different splits; do not mix them)
 
-The experiment uses paired noisy and ground-truth images from SIDD-Medium sRGB.
+| Dataset and purpose | PSNR (dB) | SSIM | Status |
+|---|---:|---:|---|
+| **Internal validation**, 20,000 steps | **36.5328** | **0.900644** | Logged during training |
+| **Internal held-out test**, 20,000-step checkpoint | **41.2316** | **0.952857** | Independently evaluated after training on 60 frozen 256 x 256 test crops |
 
-The prepared dataset contains 320 noisy/clean image pairs, with a previously verified scene-grouped split:
+**NOT the official SIDD benchmark.** These scores are not directly comparable to results measured on another scene split, dataset, crop selection, pre/postprocessing pipeline, or metric definition. In particular, do **not** claim superiority over another U-Net or NAFNet score based only on these numbers.
 
-| Split | Image pairs |
-|---|---:|
-| Training | 220 |
-| Validation | 70 |
-| Test | 30 |
+The test data comes from **one held-out physical-scene group**, and the difference between validation and test scores likely reflects the different image content/noise difficulty; this is a plausible interpretation, not a proven cause. The exact per-image source filenames were not independently checked against `test_crop_manifest.json` after export; the checkpoint's split-protocol digest matched the experiment configuration.
 
-The training pipeline uses 128×128 image patches, L1 reconstruction loss, AdamW optimization, mixed precision and a cosine learning-rate schedule.
+## Experiment setup
 
-The experiment continued from a previously saved 100-step U-Net checkpoint. The import was recorded in `legacy_100_import.json`.
+- SIDD-Medium sRGB: 320 image pairs, split into 220 training, 70 validation, 30 test pairs; scene-disjoint splitting as recorded in `run_info.json`.
+- Training uses 128 x 128 random crops, batch size 4, L1 objective, AdamW and a cosine learning-rate schedule (see config/source for implementation details).
+- Validation/test: fixed 256 x 256 RGB crops, mean of **per-crop** PSNR and 11 x 11 Gaussian SSIM; per-patch images and predictions interpreted on 0–1 scale.
+- 100 U-Net optimizer updates originated from an earlier pilot checkpoint; the remaining run continued to the 20,000-step milestone. See `legacy_100_import.json` in the private experiment archive for optimizer-state provenance.
+- Test results use the `step_020000.pt` milestone weights; they are **not** from `best_weights.pt` selected by validation.
 
-Changes between the original 100-step experiment and the subsequent training configuration should be considered when interpreting the results.
+## Files
 
-## 2. Training Results
-
-**Status: 20,000 reported training steps completed.**
-
-| Metric | Final logged value |
-|---|---:|
-| Training target | 20,000 steps |
-| Internal validation PSNR | **36.533 dB** |
-| Internal validation SSIM | **0.90064** |
-| Logged training L1 loss at 20K | **0.01287** |
-| Logged AMP skipped updates | 7 |
-
-The training logs report reaching step 20,000. The seven skipped mixed-precision updates should be considered when documenting the exact number of successful optimizer updates.
-
-These PSNR and SSIM values are from **internal validation**, not the official SIDD benchmark or the final held-out test set.
-
-## 3. Permanent Model Checkpoints
-
-The following milestone checkpoints were saved in the project's private Hugging Face storage:
-
-| Milestone | Checkpoint |
+| File | Purpose |
 |---|---|
-| 1,000 steps | `step_001000.pt` |
-| 5,000 steps | `step_005000.pt` |
-| 10,000 steps | `step_010000.pt` |
-| 20,000 steps | `step_020000.pt` |
+| `history.csv` | Logged training / validation metrics; 500-step sampling up to 20K |
+| `train_log.jsonl` | Training updates and timestamps |
+| `run_info.json` | Architecture, configuration and split fingerprints |
+| `test_summary.json` | Held-out test score and evaluation details |
+| `test_per_crop.csv` | Per-crop PSNR, SSIM, errors and noisy baseline |
+| `validation_psnr.png` | Validation PSNR plot derived from `history.csv` |
+| `validation_ssim.png` | Validation SSIM plot derived from `history.csv` |
+| `validation_loss.png` | Validation L1 loss plot derived from `history.csv` |
 
-Each checkpoint is approximately 94.2 MB.
+## Collaboration and reproducibility
 
-**Private checkpoint location:**
+This folder preserves evidence of **@Tanika-git's 20K U-Net training/evaluation experiment**, including workflow adjustments, results and reproducibility details. The recorded source revision is retained in the metadata.
 
-`tanvash/SIDD_RESEARCH_TRAINING/runs/sidd_unet_seed42_v1/unet/milestones/`
+The checkpoint `step_020000.pt` (~94 MB) is **not included in this public folder**. Share privately with teammates when needed to reproduce inference, together with the matching U-Net model code. The raw SIDD training/test images and cropped reference images are **not included** in this public upload. A separate private evidence package holds example Noisy | Prediction | Ground Truth images.
 
-The 20K checkpoint has also been downloaded for private sharing and further verification.
+## Public-package labeling note
 
-Checkpoint files are deliberately not included in this public GitHub directory. Access can be arranged with the experiment owner.
+The original evaluation function labeled its L1 error as `val_l1` even for held-out test data. In this public package, **only** that field name has been changed to `test_l1` in `test_summary.json` and `test_per_crop.csv`. All metrics and values are otherwise unchanged. This does not replace the original private evaluation artifacts.
 
-## 4. Training Evidence and Figures
-
-The experiment produces and preserves research evidence including:
-
-- Training loss
-- Validation L1 loss
-- Validation PSNR
-- Validation SSIM
-- Checkpoint and training metadata
-- Training logs
-- Fixed validation-image selection metadata
-
-Graphs for the 1K and 5K milestones were confirmed in Hugging Face storage. Remaining figures, complete metric histories and final denoising image comparisons require verification before inclusion in the final paper.
-
-No unverified metrics or generated images are reported as experimental results.
-
-## 5. Reproducibility and Experiment Records
-
-The experiment uses a fixed random seed of 42 and an internal scene-disjoint data split.
-
-Supporting records in private experiment storage include:
-
-- `run_info.json`
-- `history.csv`
-- `train_log.jsonl`
-- `legacy_100_import.json`
-- `fixed_validation_selection.json`
-- `selected_batch.json`
-- `backup_status.jsonl`
-
-The original training notebook, checkpoint metadata and exact runtime configuration should be used when reproducing the experiment.
-
-## 6. Individual Contribution and Team Collaboration
-
-This folder documents my contribution to the research project, including conducting and monitoring the U-Net training experiment, troubleshooting the Kaggle workflow, preserving model checkpoints, tracking validation performance and organizing experimental evidence.
-
-The overall project is a team effort. Other team members have also worked on U-Net and NAFNet implementations and experiments.
-
-The U-Net architecture itself and any reused or adapted implementation code are credited to their respective original authors and contributors. This record does not claim invention of the architecture or exclusive authorship of shared code.
-
-Results from this experiment may contribute to our team's research paper with appropriate acknowledgment of the individual experimental work.
-
-## 7. Evaluation Status and Limitations
-
-**Completed:**
-- U-Net training to the configured 20K target
-- Final internal validation logging
-- Cloud storage of all four permanent milestone checkpoint files
-- Preservation of key experimental records
-
-**Remaining verification:**
-- Loading and checking the archived checkpoints for reproducible inference
-- Final held-out test metrics
-- Complete 10K/20K research figures
-- Four-image denoising comparisons
-- Comparison with the teammate's U-Net experiment under a consistent evaluation protocol
 
 The experiment's internal validation results must not be presented as official SIDD benchmark scores.
 
